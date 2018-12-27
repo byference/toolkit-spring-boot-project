@@ -11,7 +11,7 @@ tools-spring-boot-starter 封装了一些常用工具类，开箱即用。
 <dependency>
     <groupId>com.github.baifenghe</groupId>
     <artifactId>tools-spring-boot-starter</artifactId>
-    <version>2.7-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 </dependency>
 ~~~
 
