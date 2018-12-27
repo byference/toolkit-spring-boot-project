@@ -5,7 +5,16 @@ tools-spring-boot-starter 封装了一些常用工具类，开箱即用。
 
 
 
-## 使用方法
+## 待完成列表
+
+- 全局异常管理
+- AOP日志输出
+- 代码优化
+- 等等。。。
+
+
+
+## 使用说明
 - 由于本项目目前还是测试版，并未提交各依赖包到中央仓库。用户可git clone本项目，然后在本地编译之后，于pom文件中引入如下依赖：
 ~~~
 <dependency>
@@ -15,11 +24,11 @@ tools-spring-boot-starter 封装了一些常用工具类，开箱即用。
 </dependency>
 ~~~
 
-- 在主类上引用`@EnableTest`注解，开启测试功能
+- 在主类上引用`@@EnableParamCheck`注解，即可开启参数校验注解。
 
 ~~~
 @SpringBootApplication
-@EnableTest
+@EnableParamCheck
 public class DemoApplication {
 
     public static void main(String[] args) {
@@ -29,7 +38,24 @@ public class DemoApplication {
 }
 ~~~
 
+使用参数校验注解`@ParamsCheck`
+
+~~~
+@RestController
+@RequestMapping
+public class TestController {
+    @Autowired
+    private TestService testService;
+
+    @RequestMapping("hello")
+    @ParamsCheck(params = "str")
+    public String hello(String str) {
+        return testService.toUpperCase(str);
+    }
+}
+~~~
 
 
-## 待办事项
-- 无
+## 目前已支持功能
+
+- 参数校验注解（后续考虑移除@EnableParamCheck，采用自动注入）
