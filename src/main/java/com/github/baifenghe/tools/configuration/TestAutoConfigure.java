@@ -8,15 +8,13 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 测试自动注入
  *
- * @author wj
+ * @author bfh
  * @since 2018/12/27
  */
 @Configuration
-//@ConditionalOnClass(TestService.class)
 public class TestAutoConfigure {
 
     @Bean
-        //@ConditionalOnMissingBean
     TestService testService() {
         return new TestService();
     }
