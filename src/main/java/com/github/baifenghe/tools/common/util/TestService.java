@@ -1,4 +1,4 @@
-package com.github.baifenghe.tools.util;
+package com.github.baifenghe.tools.common.util;
 
 /**
  * 测试
@@ -9,7 +9,8 @@ package com.github.baifenghe.tools.util;
 public class TestService {
 
     public String toUpperCase(String str) {
-        return str.toUpperCase();
+
+        return str != null ? str.toUpperCase() : "NULL";
     }
 
 }
