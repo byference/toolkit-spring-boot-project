@@ -7,7 +7,7 @@ tools-spring-boot-starter 封装了一些常用工具类，开箱即用。
 
 ## 待完成列表
 
-- 全局异常管理
+
 - AOP日志输出
 - 代码优化
 - 等等。。。
@@ -24,11 +24,11 @@ tools-spring-boot-starter 封装了一些常用工具类，开箱即用。
 </dependency>
 ~~~
 
-- 在主类上引用`@@EnableParamCheck`注解，即可开启参数校验注解。
+- 在主类上引用`@EnableParamCheckHandler`注解，即可开启参数校验注解以及全局异常处理
 
 ~~~
 @SpringBootApplication
-@EnableParamCheck
+@EnableParamCheckHandler
 public class DemoApplication {
 
     public static void main(String[] args) {
@@ -58,4 +58,5 @@ public class TestController {
 
 ## 目前已支持功能
 
-- 参数校验注解（后续考虑移除@EnableParamCheck，采用自动注入）
+- 参数校验注解: `@ParamsCheck`
+- 全局异常管理: `@EnableGlobalExceptionHandler`
