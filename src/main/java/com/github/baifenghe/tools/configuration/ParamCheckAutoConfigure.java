@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * 测试自动注入
- *
  * @author bfh
  * @since 1.0.0
  */

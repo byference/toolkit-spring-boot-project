@@ -1,12 +1,12 @@
 package com.github.baifenghe.tools.annotation;
 
-import com.github.baifenghe.tools.configuration.TestAutoConfigure;
+import com.github.baifenghe.tools.handle.GlobalExceptionHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
 /**
- * 测试注解
+ * 开启自定义全局异常处理
  *
  * @author bfh
  * @since 1.0.0
@@ -14,6 +14,6 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({TestAutoConfigure.class})
-public @interface EnableTest {
+@Import({GlobalExceptionHandler.class})
+public @interface EnableGlobalExceptionHandler {
 }
