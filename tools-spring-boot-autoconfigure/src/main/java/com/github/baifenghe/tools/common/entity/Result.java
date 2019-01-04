@@ -11,12 +11,21 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ResponseInfo<T> {
+public class Result<T> {
 
+    /**
+     * 返回码
+     */
     private Integer code;
 
+    /**
+     * 返回消息
+     */
     private String message;
 
+    /**
+     * 返回数据
+     */
     private T data;
 
 }

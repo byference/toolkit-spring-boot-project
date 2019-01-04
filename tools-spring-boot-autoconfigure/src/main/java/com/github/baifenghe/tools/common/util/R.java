@@ -2,7 +2,7 @@ package com.github.baifenghe.tools.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.github.baifenghe.tools.common.constant.CommonConst;
-import com.github.baifenghe.tools.common.entity.ResponseInfo;
+import com.github.baifenghe.tools.common.entity.Result;
 
 import java.io.Serializable;
 
@@ -16,9 +16,9 @@ public class R implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public static<T> String ok(String msg, T data) {
+    public static<T> String success(String msg, T data) {
 
-        ResponseInfo<T> info = new ResponseInfo<>();
+        Result<T> info = new Result<>();
         info.setCode(CommonConst.SUCCESS);
         info.setMessage(msg);
         info.setData(data);
@@ -26,9 +26,9 @@ public class R implements Serializable {
 
     }
 
-    public static<T> String failed(Integer code, String msg, T data) {
+    public static<T> String fail(Integer code, String msg, T data) {
 
-        ResponseInfo<T> info = new ResponseInfo<>();
+        Result<T> info = new Result<>();
         info.setCode(code);
         info.setMessage(msg);
         info.setData(data);
