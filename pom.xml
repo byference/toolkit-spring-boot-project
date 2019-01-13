@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.baifenghe</groupId>
-    <artifactId>tools-spring-boot</artifactId>
+    <artifactId>toolkit-spring-boot</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
 
 
     <modules>
-        <module>tools-spring-boot-autoconfigure</module>
-        <module>tools-spring-boot-starter</module>
+        <module>toolkit-spring-boot-autoconfigure</module>
+        <module>toolkit-spring-boot-starter</module>
     </modules>
 
 
