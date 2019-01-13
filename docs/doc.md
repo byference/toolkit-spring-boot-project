@@ -9,7 +9,7 @@
 ~~~
 <dependency>
     <groupId>com.github.baifenghe</groupId>
-    <artifactId>tools-spring-boot-starter</artifactId>
+    <artifactId>toolkit-spring-boot-starter</artifactId>
     <version>0.1-SNAPSHOT</version>
 </dependency>
 ~~~
