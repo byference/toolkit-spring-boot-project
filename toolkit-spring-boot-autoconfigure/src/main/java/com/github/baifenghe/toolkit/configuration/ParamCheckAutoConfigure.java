@@ -2,7 +2,7 @@ package com.github.baifenghe.toolkit.configuration;
 
 import com.github.baifenghe.toolkit.aop.ParamsCheck4JsonAop;
 import com.github.baifenghe.toolkit.aop.ParamsCheckAop;
-import com.github.baifenghe.toolkit.interceptor.RequestFilter;
+import com.github.baifenghe.toolkit.filter.RequestCacheFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,13 +29,13 @@ public class ParamCheckAutoConfigure {
     }
 
     @Bean
-    public FilterRegistrationBean filterRegistration() {
-        FilterRegistrationBean<RequestFilter> registration = new FilterRegistrationBean<>();
-        registration.setFilter(new RequestFilter());
+    public FilterRegistrationBean registrationCacheFilter() {
+        FilterRegistrationBean<RequestCacheFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(new RequestCacheFilter());
         List<String> urlList = new ArrayList<>();
         urlList.add("/*");
         registration.setUrlPatterns(urlList);
-        registration.setName("RequestFilter");
+        registration.setName("RequestCacheFilter");
         registration.setOrder(1);
         return registration;
     }

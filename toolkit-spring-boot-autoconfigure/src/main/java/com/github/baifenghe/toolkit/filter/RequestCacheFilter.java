@@ -1,8 +1,9 @@
-package com.github.baifenghe.toolkit.interceptor;
+package com.github.baifenghe.toolkit.filter;
 
 
 import com.github.baifenghe.toolkit.request.HttpServletRequestCacheWrapper;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -15,25 +16,17 @@ import java.io.IOException;
  * @author bfh
  * @since 2019/01/06
  */
-public class RequestFilter implements Filter {
+public class RequestCacheFilter extends OncePerRequestFilter {
 
     @Override
-    public void init(FilterConfig filterConfig) {}
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
         final String method = request.getMethod();
         if (HttpMethod.POST.matches(method) || HttpMethod.PATCH.matches(method) || HttpMethod.PUT.matches(method)) {
             if (!(request instanceof HttpServletRequestCacheWrapper)) {
                 request = new HttpServletRequestCacheWrapper(request);
             }
         }
-        filterChain.doFilter(request, servletResponse);
-
+        filterChain.doFilter(request, response);
     }
-
-    @Override
-    public void destroy() {}
 }
