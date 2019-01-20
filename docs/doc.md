@@ -27,10 +27,13 @@
 
 
 
-
-
-### 参数非空校验
+### 参数非空校验（支持json）
 在主类上引用`@EnableParamCheckHandler`注解，即可开启参数校验注解以及全局异常处理
+
+- `@ParamsCheck` 
+- `@ParamsCheck4Json` 
+
+使用方法，首先在启动类上添加开启参数校验注解 `@EnableParamCheckHandler` :
 
 ~~~
 @SpringBootApplication
@@ -50,13 +53,22 @@ public class DemoApplication {
 @RestController
 @RequestMapping
 public class TestController {
+
     @Autowired
     private TestService testService;
 
+    // 普通表单提交或get请求
     @RequestMapping("hello")
-    @ParamsCheck(params = "str")
-    public String hello(String str) {
-        return testService.toUpperCase(str);
+    @ParamsCheck(params = "name")
+    public String hello(String name) {
+        return R.success("ParamsCheck操作成功!", name);
+    }
+    
+    // json
+    @RequestMapping("json")
+    @ParamsCheck4Json(params = "name")
+    public String test(@RequestBody String name) {
+        return R.success("ParamsCheck4Json操作成功!", name);
     }
 }
 ~~~
