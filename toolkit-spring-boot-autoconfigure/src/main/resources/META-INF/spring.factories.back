@@ -1,1 +1,8 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.baifenghe.toolkit.configuration.TestAutoConfigure
+# Initializers
+# org.springframework.context.ApplicationContextInitializer=\
+
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+# com.github.baifenghe.toolkit.configuration.TestAutoConfigure,\
+com.github.baifenghe.toolkit.configuration.TestAutoConfigure
+
