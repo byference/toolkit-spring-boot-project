@@ -16,6 +16,7 @@ public class R implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Deprecated
     public static<T> String success(String msg, T data) {
 
         Result<T> info = new Result<>();
@@ -26,6 +27,7 @@ public class R implements Serializable {
 
     }
 
+    @Deprecated
     public static<T> String fail(Integer code, String msg, T data) {
 
         Result<T> info = new Result<>();

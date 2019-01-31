@@ -12,11 +12,6 @@ import lombok.Getter;
 public enum BusinessEnum {
 
     /**
-     * 参数校验失败
-     */
-    PARAMS_CHECK_ERROR(10000, "参数校验失败"),
-
-    /**
      * 未知错误
      */
     UN_KNOW_ERROR(-1, "未知错误"),
