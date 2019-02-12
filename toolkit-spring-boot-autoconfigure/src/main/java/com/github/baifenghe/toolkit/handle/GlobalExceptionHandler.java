@@ -7,10 +7,13 @@ import com.github.baifenghe.toolkit.common.util.ResponseHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Optional;
 
 /**
  * 全局异常处理
@@ -26,12 +29,20 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResponseEntity defaultExceptionHandler(Exception e) {
 
-        log.error("globalExceptionHandler exception: ", e);
+        log.error("--> GlobalExceptionHandler.Exception: ", e);
 
         if (e instanceof BindException) {
             BindException validException = (BindException) e;
             return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(BusinessEnum.ERROR.getCode(),
                     "参数校验异常：" + validException.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
+        }
+        if (e instanceof HttpMessageNotReadableException) {
+            HttpMessageNotReadableException httpMessageNotReadableException = (HttpMessageNotReadableException) e;
+            String messageSegment = Optional.ofNullable(httpMessageNotReadableException.getMessage())
+                    .map(m -> m.split(":")[0])
+                    .orElse("Required request body is missing");
+            return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(BusinessEnum.ERROR.getCode(),
+                    "参数校验异常：" + messageSegment);
         }
         if (e instanceof IllegalParameterException) {
             IllegalParameterException illegalParameterException = (IllegalParameterException) e;
@@ -47,6 +58,5 @@ public class GlobalExceptionHandler {
         return ResponseHelper.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BusinessEnum.ERROR.getCode(),
                 "系统异常：" + e.getMessage());
     }
- 
 
 }
