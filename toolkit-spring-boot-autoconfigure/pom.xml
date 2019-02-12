@@ -6,12 +6,12 @@
 
     <artifactId>toolkit-spring-boot-autoconfigure</artifactId>
     <packaging>jar</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
 
     <parent>
         <artifactId>toolkit-spring-boot</artifactId>
         <groupId>com.github.baifenghe</groupId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.2-SNAPSHOT</version>
     </parent>
 
     <dependencies>
