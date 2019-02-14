@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.example</groupId>
-    <artifactId>toolkit-spring-boot-samples</artifactId>
+    <groupId>com.github.baifenghe</groupId>
+    <artifactId>toolkit-samples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>toolkit-spring-boot-samples</name>
+    <name>toolkit-samples</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

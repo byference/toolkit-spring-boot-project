@@ -4,6 +4,9 @@ import com.github.baifenghe.toolkit.annotation.EnableParamCheckHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author bfh
+ */
 @SpringBootApplication
 @EnableParamCheckHandler
 public class SamplesApplication {
