@@ -4,23 +4,23 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
- * 日志打印切面
+ * 全局controller日志打印切面
  *
  * @author bfh
  * @since 1.0.0
  */
-//@Aspect
+@Aspect
 @Slf4j
 public class LoggerAop {
-
 
     /**
      * 切点选择为所有模块的controller层
      */
-    @Pointcut("execution(* com.github.baifenghe.*.controller.*.*(..))")
+    @Pointcut("execution(* *..controller.*.*(..))")
     public void methodLog(){}
 
     /**
@@ -32,6 +32,7 @@ public class LoggerAop {
         log.info("==> LoggerAop: {}#{}",
                 joinPoint.getTarget().getClass().getName(),
                 joinPoint.getSignature().getName());
+
         log.info("<== params: {}", JSON.toJSON(joinPoint.getArgs()));
 
     }
