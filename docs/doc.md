@@ -27,7 +27,10 @@
 
 
 
-### 参数非空校验（支持json）
+### 参数非空校验
+
+> 支持json
+
 在主类上引用`@EnableParamCheckHandler`注解，即可开启参数校验注解以及全局异常处理
 
 - `@ParamsCheck` 
