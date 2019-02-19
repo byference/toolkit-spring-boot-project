@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>toolkit-spring-boot</artifactId>
         <groupId>com.github.baifenghe</groupId>
+        <artifactId>toolkit-spring-boot</artifactId>
         <version>0.2-SNAPSHOT</version>
     </parent>
 
