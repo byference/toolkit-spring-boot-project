@@ -7,8 +7,8 @@
 
     <groupId>com.github.baifenghe</groupId>
     <artifactId>toolkit-spring-boot</artifactId>
-    <version>0.2-SNAPSHOT</version>
-    <name>toolkit</name>
+    <version>${toolkit.version}</version>
+    <name>toolkit-project</name>
     <description>开箱即用的工具集</description>
 
 
@@ -20,27 +20,11 @@
     </parent>
 
     <modules>
+        <module>toolkit-spring-boot-parent</module>
         <module>toolkit-spring-boot-autoconfigure</module>
         <module>toolkit-spring-boot-starter</module>
         <module>toolkit-spring-boot-samples</module>
     </modules>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <!-- Import dependency management from Spring Boot -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.1.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <issueManagement>
         <system>Github Issue</system>

@@ -6,21 +6,22 @@
 
     <artifactId>toolkit-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
-    <version>0.2-SNAPSHOT</version>
 
     <parent>
         <groupId>com.github.baifenghe</groupId>
-        <artifactId>toolkit-spring-boot</artifactId>
+        <artifactId>toolkit-spring-boot-parent</artifactId>
         <version>0.2-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>com.github.baifenghe</groupId>
             <artifactId>toolkit-spring-boot-autoconfigure</artifactId>
-            <version>0.2-SNAPSHOT</version>
         </dependency>
+
     </dependencies>
+
 
     <build>
         <resources>
@@ -42,9 +43,5 @@
             </plugin>
         </plugins>
     </build>
-
-
-
-
 
 </project>
