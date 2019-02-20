@@ -11,12 +11,6 @@
     <name>toolkit-project</name>
     <description>开箱即用的工具集</description>
 
-    <!--<parent>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--<version>2.1.1.RELEASE</version>-->
-    <!--</parent>-->
-
     <modules>
         <module>toolkit-spring-boot-parent</module>
         <module>toolkit-spring-boot-common</module>
