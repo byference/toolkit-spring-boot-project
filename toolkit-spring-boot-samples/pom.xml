@@ -13,6 +13,7 @@
         <groupId>com.github.baifenghe</groupId>
         <artifactId>toolkit-spring-boot-parent</artifactId>
         <version>0.2-SNAPSHOT</version>
+        <relativePath>../toolkit-spring-boot-parent</relativePath>
     </parent>
 
     <modules>

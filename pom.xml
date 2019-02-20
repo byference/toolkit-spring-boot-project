@@ -7,20 +7,19 @@
 
     <groupId>com.github.baifenghe</groupId>
     <artifactId>toolkit-spring-boot</artifactId>
-    <version>${toolkit.version}</version>
+    <version>0.2-SNAPSHOT</version>
     <name>toolkit-project</name>
     <description>开箱即用的工具集</description>
 
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+    <!--<parent>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+        <!--<version>2.1.1.RELEASE</version>-->
+    <!--</parent>-->
 
     <modules>
         <module>toolkit-spring-boot-parent</module>
+        <module>toolkit-spring-boot-common</module>
         <module>toolkit-spring-boot-autoconfigure</module>
         <module>toolkit-spring-boot-starter</module>
         <module>toolkit-spring-boot-samples</module>
@@ -59,16 +58,10 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
         </plugins>
     </build>
