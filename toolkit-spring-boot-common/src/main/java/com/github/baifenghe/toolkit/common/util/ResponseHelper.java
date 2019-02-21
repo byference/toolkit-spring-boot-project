@@ -1,7 +1,6 @@
 package com.github.baifenghe.toolkit.common.util;
 
-import lombok.Builder;
-import lombok.Getter;
+import com.github.baifenghe.toolkit.common.model.Result;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -84,27 +83,6 @@ public class ResponseHelper {
 
             return new ResponseEntity<>(null, this.headers, this.statusCode);
         }
-
-    }
-
-    @Builder
-    @Getter
-    private static class Result<T> {
-
-        /**
-         * 返回码
-         */
-        private Integer code;
-
-        /**
-         * 返回消息
-         */
-        private String message;
-
-        /**
-         * 返回数据
-         */
-        private T data;
 
     }
 
