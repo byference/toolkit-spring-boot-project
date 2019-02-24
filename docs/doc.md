@@ -10,7 +10,7 @@
 <dependency>
     <groupId>com.github.baifenghe</groupId>
     <artifactId>toolkit-spring-boot-starter</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
 </dependency>
 ~~~
 
@@ -21,6 +21,8 @@
 1. [参数非空校验](#参数非空校验)
 
 2. [全局异常处理](#全局异常处理)
+
+3. [全局日志处理](#全局日志处理)
 
 
 
@@ -38,7 +40,7 @@
 
 使用方法，首先在启动类上添加开启参数校验注解 `@EnableParamCheckHandler` :
 
-~~~
+~~~java
 @SpringBootApplication
 @EnableParamCheckHandler
 public class DemoApplication {
@@ -52,7 +54,7 @@ public class DemoApplication {
 
 使用参数校验注解`@ParamsCheck`
 
-~~~
+~~~java
 @RestController
 @RequestMapping
 public class TestController {
@@ -79,9 +81,24 @@ public class TestController {
 
 ### 全局异常处理
 
-~~~
+~~~java
 @SpringBootApplication
 @EnableGlobalExceptionHandler
+public class DemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+}
+~~~
+
+
+
+### 全局日志处理
+~~~java
+@SpringBootApplication
+@EnableGlobalLog
 public class DemoApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-## toolkit-spring-boot-project
+## Toolkit Spring Boot Project
 
 
 [![toolkit--spring--boot--project](https://img.shields.io/badge/version-0.2--SNAPSHOT-green.svg)](https://github.com/baifenghe/toolkit-spring-boot-project)  [![GitHub stars](https://img.shields.io/github/stars/baifenghe/toolkit-spring-boot-project.svg?style=flat&label=Star)](https://github.com/baifenghe/toolkit-spring-boot-project)  [![GitHub issues](https://img.shields.io/github/issues/baifenghe/toolkit-spring-boot-project.svg?style=flat&label=issues)](https://github.com/baifenghe/toolkit-spring-boot-project/issues)  [![GitHub license](https://img.shields.io/github/license/baifenghe/toolkit-spring-boot-project.svg?style=flat&label=license)](https://github.com/baifenghe/toolkit-spring-boot-project)
@@ -7,15 +7,10 @@
 
 
 
+## TODO LIST
 
-
-
-## 待完成列表
-
-
-- AOP日志输出
-- 代码优化
-- 等等。。。
+- [x] 工程模块化
+- [ ] 发布RELEASE版本
 
 
 
