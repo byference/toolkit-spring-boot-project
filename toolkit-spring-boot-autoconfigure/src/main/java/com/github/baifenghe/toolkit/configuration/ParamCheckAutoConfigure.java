@@ -6,27 +6,25 @@ import com.github.baifenghe.toolkit.filter.RequestCacheFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
+ * 注入参数校验注解相关 Bean
+ *
+ * @see ParamsCheckAop
+ * @see ParamsCheck4JsonAop
+ * @see RequestCacheFilter
+ *
  * @author bfh
  * @since 1.0.0
  */
 @Configuration
+@Import({ParamsCheckAop.class, ParamsCheck4JsonAop.class})
 public class ParamCheckAutoConfigure {
-
-    @Bean
-    ParamsCheckAop paramsCheckAop() {
-        return new ParamsCheckAop();
-    }
-
-    @Bean
-    ParamsCheck4JsonAop paramsCheck4JsonAop() {
-        return new ParamsCheck4JsonAop();
-    }
 
     @Bean
     public FilterRegistrationBean registrationCacheFilter() {

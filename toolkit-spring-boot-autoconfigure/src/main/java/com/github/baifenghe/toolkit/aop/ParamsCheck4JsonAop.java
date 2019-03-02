@@ -12,6 +12,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -27,30 +28,41 @@ import java.lang.reflect.Method;
  */
 @Aspect
 @Slf4j
+@Configuration
 public class ParamsCheck4JsonAop {
 
+    /**
+     * 切点选择为 {@link ParamsCheck4Json} 注解
+     */
     @Pointcut("@annotation(com.github.baifenghe.toolkit.annotation.ParamsCheck4Json)")
-    public void MyMethod(){}
+    public void MyPointcut(){}
 
-    @Before("MyMethod()")
-    public void doAfterReturning(JoinPoint joinPoint) {
+
+    /**
+     * 配置前置通知，进行参数校验
+     * @param joinPoint {@link JoinPoint}
+     */
+    @Before("MyPointcut()")
+    public void doBeforeAccess(JoinPoint joinPoint) {
 
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         HttpServletRequestCacheWrapper requestWrapper = (HttpServletRequestCacheWrapper) request;
         String json = new String(requestWrapper.getBody());
         log.info("json: {}", json);
-        JSONObject jsonObject = JSON.parseObject(json);
+        if (!StringUtils.isEmpty(json)) {
+            JSONObject jsonObject = JSON.parseObject(json);
 
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Method method = methodSignature.getMethod();
-        ParamsCheck4Json paramsCheck4Json = method.getAnnotation(ParamsCheck4Json.class);
-        String params = paramsCheck4Json.params();
-        if (!StringUtils.isEmpty(params)) {
-            String[] split = params.split(",");
-            for (String parameter : split) {
-                log.info("parameter: {}", parameter);
-                if (StringUtils.isEmpty(jsonObject.get(parameter))) {
-                    throw new IllegalParameterException(parameter + " 不能为空", IllegalParameterEnum.PARAMS_CHECK_ERROR.getCode());
+            MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+            Method method = methodSignature.getMethod();
+            ParamsCheck4Json paramsCheck4Json = method.getAnnotation(ParamsCheck4Json.class);
+            String params = paramsCheck4Json.params();
+            if (!StringUtils.isEmpty(params)) {
+                String[] split = params.split(",");
+                for (String parameter : split) {
+                    log.info("parameter: {}", parameter);
+                    if (StringUtils.isEmpty(jsonObject.get(parameter))) {
+                        throw new IllegalParameterException(parameter + " 不能为空", IllegalParameterEnum.PARAMS_CHECK_ERROR.getCode());
+                    }
                 }
             }
         }

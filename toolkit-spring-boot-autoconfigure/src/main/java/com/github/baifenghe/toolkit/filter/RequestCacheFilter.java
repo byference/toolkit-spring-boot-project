@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * RequestInterceptor
+ * 构建 {@code RequestCacheFilter} 过滤器
  *
  * @author bfh
  * @since 2019/01/06

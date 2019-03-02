@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -23,13 +24,22 @@ import java.lang.reflect.Method;
  * @since 1.0.0
  */
 @Aspect
+@Configuration
 public class ParamsCheckAop {
 
-    @Pointcut("@annotation(com.github.baifenghe.toolkit.annotation.ParamsCheck)")
-    public void MyMethod(){}
 
-    @Before("MyMethod()")
-    public void doAfterReturning(JoinPoint joinPoint) {
+    /**
+     * 切点选择为 {@link ParamsCheck} 注解
+     */
+    @Pointcut("@annotation(com.github.baifenghe.toolkit.annotation.ParamsCheck)")
+    public void MyPointcut(){}
+
+    /**
+     * 配置前置通知，进行参数校验
+     * @param joinPoint {@link JoinPoint}
+     */
+    @Before("MyPointcut()")
+    public void doBeforeAccess(JoinPoint joinPoint) {
 
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
         ServletRequestAttributes sra = (ServletRequestAttributes) ra;
