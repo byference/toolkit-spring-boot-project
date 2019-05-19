@@ -25,35 +25,55 @@ import java.util.Optional;
 @Slf4j
 public class GlobalExceptionHandler {
 
+
+    @ExceptionHandler(BindException.class)
+    @ResponseBody
+    public ResponseEntity bindExceptionHandler(Exception e) {
+
+        BindException validException = (BindException) e;
+        return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(BusinessEnum.ERROR.getCode(),
+                "参数校验异常：" + validException.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
+    }
+
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseBody
+    public ResponseEntity httpMessageNotReadableExceptionHandler(Exception e) {
+
+        HttpMessageNotReadableException httpMessageNotReadableException = (HttpMessageNotReadableException) e;
+        String messageSegment = Optional.ofNullable(httpMessageNotReadableException.getMessage())
+                .map(m -> m.split(":")[0])
+                .orElse("Required request body is missing");
+        return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(BusinessEnum.ERROR.getCode(),
+                "参数校验异常：" + messageSegment);
+    }
+
+
+    @ExceptionHandler(IllegalParameterException.class)
+    @ResponseBody
+    public ResponseEntity illegalParameterExceptionHandler(Exception e) {
+
+        IllegalParameterException illegalParameterException = (IllegalParameterException) e;
+        return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(illegalParameterException.getCode(),
+                "参数校验异常：" + illegalParameterException.getMessage());
+    }
+
+
+    @ExceptionHandler(BusinessException.class)
+    @ResponseBody
+    public ResponseEntity businessExceptionExceptionHandler(Exception e) {
+
+        BusinessException businessException = (BusinessException) e;
+        return ResponseHelper.status(HttpStatus.INTERNAL_SERVER_ERROR).body(businessException.getCode(),
+                "业务异常：" + businessException.getMessage());
+    }
+
+
+
+
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseEntity defaultExceptionHandler(Exception e) {
-
-        log.error("--> GlobalExceptionHandler.Exception: ", e);
-
-        if (e instanceof BindException) {
-            BindException validException = (BindException) e;
-            return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(BusinessEnum.ERROR.getCode(),
-                    "参数校验异常：" + validException.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
-        }
-        if (e instanceof HttpMessageNotReadableException) {
-            HttpMessageNotReadableException httpMessageNotReadableException = (HttpMessageNotReadableException) e;
-            String messageSegment = Optional.ofNullable(httpMessageNotReadableException.getMessage())
-                    .map(m -> m.split(":")[0])
-                    .orElse("Required request body is missing");
-            return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(BusinessEnum.ERROR.getCode(),
-                    "参数校验异常：" + messageSegment);
-        }
-        if (e instanceof IllegalParameterException) {
-            IllegalParameterException illegalParameterException = (IllegalParameterException) e;
-            return ResponseHelper.status(HttpStatus.BAD_REQUEST).body(illegalParameterException.getCode(),
-                    "参数校验异常：" + illegalParameterException.getMessage());
-        }
-        if (e instanceof BusinessException) {
-            BusinessException businessException = (BusinessException) e;
-            return ResponseHelper.status(HttpStatus.INTERNAL_SERVER_ERROR).body(businessException.getCode(),
-                    "业务异常：" + businessException.getMessage());
-        }
 
         return ResponseHelper.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BusinessEnum.ERROR.getCode(),
                 "系统异常：" + e.getMessage());
