@@ -3,6 +3,6 @@
 
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-# com.github.baifenghe.toolkit.configuration.TestAutoConfigure,\
-com.github.baifenghe.toolkit.configuration.TestAutoConfigure
+# com.github.byference.toolkit.configuration.TestAutoConfigure,\
+com.github.byference.toolkit.configuration.TestAutoConfigure
 

@@ -8,7 +8,7 @@
 
 ~~~
 <dependency>
-    <groupId>com.github.baifenghe</groupId>
+    <groupId>com.github.byference</groupId>
     <artifactId>toolkit-spring-boot-starter</artifactId>
     <version>0.2-SNAPSHOT</version>
 </dependency>
